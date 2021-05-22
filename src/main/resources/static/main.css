@@ -1,0 +1,23 @@
+a {
+    display: inline-block;
+    color:honeydew;
+    width: 250px;
+    margin: 20px auto;
+    padding: 10px 0;
+    text-decoration: none;
+    text-align: center;
+    background-color: dimgrey;
+    border-radius: 5px;
+}
+div {
+    margin:25px;
+    border: 1px solid green;
+
+}
+table{
+    border-collapse:collapse ;
+}
+td {
+    border:1px solid #883a3a;
+
+}
