@@ -4,13 +4,9 @@ import com.lift.spring.progect.model.House;
 import com.lift.spring.progect.model.Lift;
 import com.lift.spring.progect.model.LogLift;
 import com.lift.spring.progect.model.User;
-import com.lift.spring.progect.service.Move;
 import org.springframework.stereotype.Component;
 
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
-import java.util.Queue;
 
 @Component("console")
 public class ShowConsole implements View {

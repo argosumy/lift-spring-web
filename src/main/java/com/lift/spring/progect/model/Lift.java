@@ -65,6 +65,4 @@ public class Lift implements Serializable {
     public List<User> getUsersIntoLift() {
         return usersIntoLift;
     }
-
-
 }

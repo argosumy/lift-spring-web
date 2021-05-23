@@ -9,6 +9,7 @@ public class User implements Comparable, Serializable {
     private final int id;
     private int position;
     private int newPosition;
+    private int oldPosition;
     private Move move;
     private final static Logger logger = Logger.getLogger(User.class);
 
@@ -23,6 +24,7 @@ public class User implements Comparable, Serializable {
     }
 
     public void setPosition(int position) {
+        this.oldPosition = this.position;
         this.position = position;
     }
 
@@ -32,6 +34,7 @@ public class User implements Comparable, Serializable {
 
     public void setNewPosition(int newPosition) {
         this.newPosition = newPosition;
+
         if (position < newPosition) {
             move = Move.UP;
         } else {
@@ -59,6 +62,6 @@ public class User implements Comparable, Serializable {
 
     @Override
     public String toString() {
-        return "User " + id + " position " + position + " move " + newPosition;
+        return "User " + id + " arrived " + oldPosition + " move " + newPosition;
     }
 }
