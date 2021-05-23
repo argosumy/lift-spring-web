@@ -1,3 +1,8 @@
+header h1 {
+    width: 250px;
+    margin-right: auto;
+    margin-left: auto;
+}
 a {
     display: inline-block;
     color:honeydew;
@@ -10,14 +15,49 @@ a {
     border-radius: 5px;
 }
 div {
-    margin:25px;
-    border: 1px solid green;
+    margin:10px;
+    border: 1px solid #008000;
 
 }
 table{
-    border-collapse:collapse ;
+    border-collapse:collapse;
+    margin-left: auto;
+    margin-right: auto;
+    width:700px;
 }
-td {
-    border:1px solid #883a3a;
+
+.node {
+    background-color: #a5fafa;
+    border:3px solid navajowhite;
+}
+
+.move {
+    padding-left: 5px;
+    padding-right: 5px;
+    background-color: white;
+}
+table .lift{
+    background-color: white;
+    padding-left: 5px;
 
 }
+
+li {
+    list-style-type: none;
+    margin-left: 5px;
+}
+
+.btn {
+    display: block;
+    width: 250px;
+    margin-top: 50px;
+    margin-right: auto;
+    margin-left: auto;
+    font-size: 25px;
+    line-height: 30px;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    background-color: #be8735;
+}
+

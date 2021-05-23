@@ -1,6 +1,5 @@
 package com.lift.spring.progect.model;
 
-
 import com.lift.spring.progect.service.Move;
 import com.lift.spring.progect.service.RandomGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +20,7 @@ public class House implements Serializable {
     private transient String amountUsersFloor;
     private transient int amountFlor;
     private Map<Integer, Map<Move, Queue<User>>> usersHouse;
-    private transient RandomGenerator generator;
+    private transient final RandomGenerator generator;
     public Lift lift;
     @Value("${lift.size}")
     private transient int liftSize;

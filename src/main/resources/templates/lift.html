@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>House</title>
+    <link rel="stylesheet" th:href="@{main.css}">
+</head>
+<body>
+    <header>
+        <h1>Log events for lift</h1>
+    </header>
+    <section>
+        <table>
+            <div th:remove="tag" th:each ="floor, index:${logLift}">
+                <tr class="node">
+                    <td class="lift" rowspan="2">
+                        <p>Step <span th:text="${index.count}"></span></p>
+                        <h2>Floor N<span th:text="${floor.get(0).position}"> </span></h2>
+                        <p>Lift <span th:text="${floor.get(0).move.name}"></span></p>
+                        <ul th:each="user_lift:${floor.get(0).usersIntoLift}">
+                            <li th:text="${user_lift}"></li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul th:each="users_up:${floor.get(1)}">
+                            <li th:text="${users_up}"></li>
+                        </ul>
+                    </td>
+                    <td class="move">UP</td>
+                </tr>
+                <tr class="node">
+                    <td>
+                        <ul th:each="users_down:${floor.get(2)}">
+                            <li th:text="${users_down}"></li>
+                        </ul>
+                    </td>
+                    <td class="move">DOWN</td>
+                </tr>
+            </div>
+        </table>
+        <a class="btn" href="/generate" name="generate">Generate new house</a>
+    </section>
+</body>
+</html>

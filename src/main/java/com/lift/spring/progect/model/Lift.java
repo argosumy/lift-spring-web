@@ -10,10 +10,10 @@ import java.util.Objects;
 
 public class Lift implements Serializable {
     private transient final int maxUser;
-    private transient Move move;
+    private Move move;
     private int position;
     private transient int nextPosition;
-    private List<User> usersIntoLift;
+    private final List<User> usersIntoLift;
     private transient final static Logger logger = Logger.getLogger(Lift.class);
 
     public Lift(int maxUser) {

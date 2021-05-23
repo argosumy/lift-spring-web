@@ -1,27 +1,26 @@
 package com.lift.spring.progect.model;
 
 import com.lift.spring.progect.service.Move;
-import org.springframework.stereotype.Component;
 
 import java.io.*;
 import java.util.*;
-@Component
-public class Event {
-    private List<Lift> eventLift;
-    private List<Map<Move, Queue<User>>> eventFloor;
+public class LogLift {
+    private final List<List<Object>> result;
 
-    public Event() {
-        this.eventLift = new ArrayList<>();
-        this.eventFloor = new ArrayList<>();
+    public LogLift() {
+        this.result = new ArrayList<>();
     }
 
-
     public void addLoggingLiftFloor(House house) throws IOException {
-        House cloneHouse;
         try {
-            cloneHouse = serializeDeserialize(house);
-            eventLift.add(cloneHouse.getLift());
-            eventFloor.add(cloneHouse.getUsersHouse().get(cloneHouse.getLift().getPosition()));
+            List<Object> eventFloor = new ArrayList<>();
+            House cloneHouse = serializeDeserialize(house);
+            Lift lift = cloneHouse.getLift();
+            eventFloor.add(lift);
+            Map<Move, Queue<User>> floor = cloneHouse.getUsersHouse().get(cloneHouse.getLift().getPosition());
+            eventFloor.add(floor.get(Move.UP));
+            eventFloor.add(floor.get(Move.DOWN));
+            result.add(eventFloor);
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
@@ -43,12 +42,7 @@ public class Event {
             }
         }
     }
-
-    public List<Lift> getEventLift() {
-        return eventLift;
-    }
-
-    public List<Map<Move, Queue<User>>> getEventFloor() {
-        return eventFloor;
+    public List<List<Object>> getResult() {
+        return result;
     }
 }

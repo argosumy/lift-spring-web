@@ -6,25 +6,9 @@
     <link rel="stylesheet" th:href="@{main.css}">
 </head>
 <body>
-    <header>
-        <h1>Lift</h1>
-    </header>
+
     <section>
-        <div>
-            <p>Please enter parameters</p>
-            <form action="send-parameter" method="post">
-                <p>Number of floors</p>
-                <input type="number" name="floors">
-                <p>Lift capacity</p>
-                <input type="number" name="lift-size">
-                <p>Number of people on the floor</p>
-                <input type="number" name="users">
-                <input type="submit">
-            </form>
-        </div>
-        <div>
-            <a href="/generate" name="generate">Generate house</a>
-        </div>
+            <a class="btn" href="/generate" name="generate">Generate house</a>
     </section>
 </body>
 </html>

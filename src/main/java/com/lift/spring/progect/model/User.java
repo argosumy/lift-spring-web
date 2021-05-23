@@ -43,6 +43,10 @@ public class User implements Comparable, Serializable {
         return move;
     }
 
+    public int getId() {
+        return id;
+    }
+
     @Override
     public int compareTo(Object o) {
         User user = (User)o;

@@ -1,11 +1,8 @@
 package com.lift.spring.progect.service;
 
-import com.lift.spring.progect.model.Event;
+import com.lift.spring.progect.model.LogLift;
 import com.lift.spring.progect.model.House;
-//import com.lift.spring.progect.model.Lift;
-import com.lift.spring.progect.model.Lift;
 import com.lift.spring.progect.model.User;
-import com.lift.spring.progect.view.View;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,27 +15,22 @@ import java.util.stream.Collectors;
 public class LiftServiceImpl implements LiftService {
     private final House house;
     private final RandomGenerator generator;
-    private View view;
     private final static Logger logger = Logger.getLogger(LiftServiceImpl.class);
-    private Event event;
     @Autowired
-    public LiftServiceImpl(RandomGenerator generator, House house, View view, Event event) {
+    public LiftServiceImpl(RandomGenerator generator, House house) {
         this.house = house;
         this.generator = generator;
-        this.view = view;
-        this.event = event;
     }
     @Override
-    public void firstStart() throws IOException {
+    public void firstStart(LogLift event) throws IOException {
         logger.info("FLOOR - " + house.getLift().getPosition());
         house.getLift().getUsersIntoLift().removeIf(Objects::isNull);
-        view.showHouse();
         event.addLoggingLiftFloor(house);
         usersComeInLift(house.getUsersHouse().get(house.getLift().getPosition()));
         run();
         usersGoOutLift();
         if(house.getLift().getUsersIntoLift().size() > 0) {
-            firstStart();
+            firstStart(event);
         }
     }
 
@@ -88,13 +80,6 @@ public class LiftServiceImpl implements LiftService {
         logger.info("RUN LIFT");
     }
 
-//    public Lift getLift() {
-//        return lift;
-//    }
-//
-//    public void setLift(House.Lift lift) {
-//        this.lift = lift;
-//    }
 
     private User updateUser(User userStream) {
         userStream.setPosition(house.getLift().getPosition());
